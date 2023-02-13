@@ -62,6 +62,8 @@ class Main(QtWidgets.QMainWindow):
         except:
             print('\033[31m -- add_reg Error -- \033[0m',
                   traceback.format_exc())
+            print('\033[31m -- add_reg Error -- \033[0m',
+                  traceback.format_exc())
 
     def delete_reg(self):
         dlg = Delete_dialog()
@@ -75,6 +77,8 @@ class Main(QtWidgets.QMainWindow):
         except:
             print('\033[31m -- delete_reg Error -- \033[0m',
                   traceback.format_exc())
+            print('\033[31m -- delete_reg Error -- \033[0m',
+                  traceback.format_exc())
 
     def update_reg(self):
         dlg = Update_dialog()
@@ -84,9 +88,12 @@ class Main(QtWidgets.QMainWindow):
                                 int(dlg.mark_field.text()))
                 self.print_reg()
                 print('Success update_reg, id: ', int(dlg.id_field.text()))
+                print('Success update_reg, id: ', int(dlg.id_field.text()))
             else:
                 print('Canceled update_dialog')
         except:
+            print('\033[31m -- update_reg Error -- \033[0m',
+                  traceback.format_exc())
             print('\033[31m -- update_reg Error -- \033[0m',
                   traceback.format_exc())
 

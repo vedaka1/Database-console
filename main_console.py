@@ -5,7 +5,7 @@ from psycopg2.extensions import register_type, UNICODE
 elephant = "host='tyke.db.elephantsql.com' port='5432' dbname='zraipbcj' user='zraipbcj' password='UKhLBec43xcfm_dKAqwAGyRN-WVUBR-V'"
 rpr = "host='10.163.31.218' port='5432' dbname='rpr' user='kuleshov_v' password='kuleshov_v'"
 
-CONN_STR = rpr
+CONN_STR = elephant
 conn = ''
 cur = ''
 

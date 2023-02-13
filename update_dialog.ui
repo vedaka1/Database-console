@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>162</width>
-    <height>171</height>
+    <width>177</width>
+    <height>183</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -73,6 +73,9 @@ QTextEdit:focus{
 }
 </string>
        </property>
+       <property name="placeholderText">
+        <string>register id</string>
+       </property>
       </widget>
      </item>
      <item alignment="Qt::AlignHCenter">
@@ -111,6 +114,9 @@ QTextEdit:focus{
 	border: 1px solid #000;
 }
 </string>
+       </property>
+       <property name="placeholderText">
+        <string>mark</string>
        </property>
       </widget>
      </item>

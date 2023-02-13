@@ -1,13 +1,25 @@
 import psycopg2
 from psycopg2.extensions import register_type, UNICODE
 
-CONN_STR = "host='tyke.db.elephantsql.com' port='5432' dbname='zraipbcj' user='zraipbcj' password='UKhLBec43xcfm_dKAqwAGyRN-WVUBR-V'"
 
+elephant = "host='tyke.db.elephantsql.com' port='5432' dbname='zraipbcj' user='zraipbcj' password='UKhLBec43xcfm_dKAqwAGyRN-WVUBR-V'"
+rpr = "host='10.163.31.218' port='5432' dbname='rpr' user='kuleshov_v' password='kuleshov_v'"
+
+CONN_STR = rpr
+conn = ''
+cur = ''
+
+def connection():
+    global cur, conn
+    try:
+        register_type(UNICODE)
+        conn = psycopg2.connect(CONN_STR)
+        cur = conn.cursor()
+    except:
+        print('Connection Error')
 
 def print_discipline():
-    register_type(UNICODE)
-    conn = psycopg2.connect(CONN_STR)
-    cur = conn.cursor()
+    connection()
     cur.execute('select * from kuleshov_v.discipline')
     dis = cur.fetchall()
 
@@ -23,12 +35,7 @@ def print_discipline():
 
 
 def print_register(text):
-    register_type(UNICODE)
-    try:
-        conn = psycopg2.connect(CONN_STR)
-        cur = conn.cursor()
-    except:
-        print('Connection Error!')
+    connection()
     cur.execute('select * from kuleshov_v.register')
     reg = cur.fetchall()
     for row in reg:
@@ -45,8 +52,7 @@ def print_register(text):
 
 def add_discipline(discipline_name, department_name, hours_amount,
                    control_type):
-    conn = psycopg2.connect(CONN_STR)
-    cur = conn.cursor()
+    connection()
     cur.callproc(
         'kuleshov_v.add_discipline',
         [discipline_name, department_name, hours_amount, control_type])
@@ -56,8 +62,7 @@ def add_discipline(discipline_name, department_name, hours_amount,
 
 
 def delete_register(register_id):
-    conn = psycopg2.connect(CONN_STR)
-    cur = conn.cursor()
+    connection()
     cur.callproc('kuleshov_v.delete_register', [register_id])
     conn.commit()
     cur.close()
@@ -65,8 +70,7 @@ def delete_register(register_id):
 
 
 def update_register(register_id, mark):
-    conn = psycopg2.connect(CONN_STR)
-    cur = conn.cursor()
+    connection()
     cur.callproc('kuleshov_v.update_register', [register_id, mark])
     conn.commit()
     cur.close()
@@ -74,8 +78,7 @@ def update_register(register_id, mark):
 
 
 def add_register(student_id, discipline_name, teacher_id, mark):
-    conn = psycopg2.connect(CONN_STR)
-    cur = conn.cursor()
+    connection()
     cur.callproc('kuleshov_v.add_register', [student_id, discipline_name, teacher_id, mark])
     conn.commit()
     cur.close()

@@ -6,41 +6,34 @@ from main_console import print_register, add_register, delete_register, update_r
 class Update_dialog(QtWidgets.QDialog):
 
     def __init__(self):
-        super().__init__()
+        super(Update_dialog, self).__init__()
         uic.loadUi("update_dialog.ui", self)
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
-        self.id_field.setPlaceholderText('id')
-        self.mark_field.setPlaceholderText('mark')
 
 
 class Delete_dialog(QtWidgets.QDialog):
 
     def __init__(self):
-        super().__init__()
+        super(Delete_dialog, self).__init__()
         uic.loadUi("delete_dialog.ui", self)
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
-        self.id_field.setPlaceholderText('id')
 
 
 class Add_dialog(QtWidgets.QDialog):
 
     def __init__(self):
-        super().__init__()
+        super(Add_dialog, self).__init__()
         uic.loadUi("add_dialog.ui", self)
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
-        self.student_id_field.setPlaceholderText('student id')
-        self.discipline_name_field.setPlaceholderText('disclipline name')
-        self.teacher_id_field.setPlaceholderText('teacher id')
-        self.mark_field.setPlaceholderText('mark')
 
 
 class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
-        super().__init__()
+        super(Main, self).__init__()
         uic.loadUi("main.ui", self)
         self.delete_register_btn.clicked.connect(self.delete_reg)
         self.update_register_btn.clicked.connect(self.update_reg)
@@ -63,12 +56,12 @@ class Main(QtWidgets.QMainWindow):
                              int(dlg.teacher_id_field.text()),
                              int(dlg.mark_field.text()))
                 self.print_reg()
-                print('Success add_reg, id: ',
-                      int(dlg.id_field.text()))
+                print('Success add_reg, id')
             else:
                 print('Canceled add_reg')
         except:
-            print('\033[31m -- add_reg Error -- \033[0m', traceback.format_exc())
+            print('\033[31m -- add_reg Error -- \033[0m',
+                  traceback.format_exc())
 
     def delete_reg(self):
         dlg = Delete_dialog()
@@ -80,7 +73,8 @@ class Main(QtWidgets.QMainWindow):
             else:
                 print("Canceled delete_reg")
         except:
-            print('\033[31m -- delete_reg Error -- \033[0m', traceback.format_exc())
+            print('\033[31m -- delete_reg Error -- \033[0m',
+                  traceback.format_exc())
 
     def update_reg(self):
         dlg = Update_dialog()
@@ -89,12 +83,12 @@ class Main(QtWidgets.QMainWindow):
                 update_register(int(dlg.id_field.text()),
                                 int(dlg.mark_field.text()))
                 self.print_reg()
-                print('Success update_reg, id: ',
-                      int(dlg.id_field.text()))
+                print('Success update_reg, id: ', int(dlg.id_field.text()))
             else:
                 print('Canceled update_dialog')
         except:
-            print('\033[31m -- update_reg Error -- \033[0m', traceback.format_exc())
+            print('\033[31m -- update_reg Error -- \033[0m',
+                  traceback.format_exc())
 
 
 if __name__ == ("__main__"):

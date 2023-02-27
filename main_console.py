@@ -38,13 +38,6 @@ def print_register(text):
     connection()
     cur.execute('select * from kuleshov_v.register')
     text = cur.fetchall()
-    # for row in reg:
-    #     text += ('#--register_id: '+ str(row[0])+ "\n")
-    #     text += ("#--student_id: " + str(row[1])+ "\n")
-    #     text += ("#--discipline_name: " + str(row[2])+ "\n")
-    #     text += ("#--teacher_id: " + str(row[3]) + "\n")
-    #     text += ("#--mark: " + str(row[4]) + "\n"+ "\n")
-
     cur.close()
     conn.close()
     return text

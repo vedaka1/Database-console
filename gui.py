@@ -34,7 +34,7 @@ class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(Main, self).__init__()
-        uic.loadUi("main_test.ui", self)
+        uic.loadUi("main.ui", self)
         self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
         self.delete_register_btn.clicked.connect(self.delete_reg)
         self.update_register_btn.clicked.connect(self.update_reg)
